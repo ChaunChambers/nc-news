@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ArticlesList />}></Route>
           <Route path="/api/articles" element={<ArticlesList />}></Route>
+          <Route path="/api/articles/:article_id" element={<Article />}></Route>
         </Routes>
       </Router>
     </>
