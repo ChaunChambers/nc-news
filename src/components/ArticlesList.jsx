@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import getArticles from "../assets/Utils/getArticles";
 import ArticleCard from "./ArticleCard";
+import { Link, useParams } from "react-router-dom";
 
-const ArticlesList = () => {
+const ArticlesList = (article_id) => {
   const [listArticles, setListArticles] = useState([]);
 
   useEffect(() => {
@@ -16,7 +17,9 @@ const ArticlesList = () => {
         {listArticles.map((article, index) => {
           return (
             <li key={index} className="item">
-              <ArticleCard article={article} />
+              {console.log(article_id)}
+
+              <ArticleCard article={article} article_id={article_id} />
             </li>
           );
         })}
