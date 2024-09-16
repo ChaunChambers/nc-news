@@ -1,0 +1,48 @@
+Have a look at your API endpoints. Think about what data you have available, and how you will structure your application.
+
+- GET/api
+    - serves up a json representation of all the available endpoints of the api
+- GET/api/topics
+    - serves an array of all topics
+- GET/api/articles
+    - serves an array of all articles in descending order by date
+- GET/api/articles/:article_id
+    - serves an object by article article_id
+- GET/api/articles/:article_id/comments
+    - serves an array of comments for the given article_id
+- GET/api/articles/:article_id (comment_count)
+    - Responds with article object containing comment_count
+- GET/api/articles (sorting queries)
+    - Gets endpoint by sort_by and order queries
+- GET/api/articles (topic query)
+    - Filters articles by topic
+- GET/api/users
+    - Gets a list of all users
+- GET/api/users/:username
+    - Responds with user object given username
+
+- POST/api/articles/:article_id/comments
+    - posts new comment given the article_id
+- PATCH/api/articles/:article_id
+    - updates votes property of srticle by article_id
+- DELETE/api/comments/:comment_id
+    - deletes a comment given comment_id
+
+
+What routes will your application have? What articles will you choose to display on the main page?
+
+Routes 
+    - /
+    - /api/articles
+        - /api/articles (sorting queries -  "comment_count", "title", "topic", "author", "created_at", "votes" "article_img_url", "article_id",) Order by - descending, ascending 
+        - /api/articles (topic query) - "mitch", "cats"
+    - /api/articles/:article_id
+        - /api/articles/:article_id/comments (lists comments by article id)
+        - /api/articles/:article_id (comment_count)
+        - PATCH/api/articles/:article_id (updates votes property of article by article_id)
+    - /api/articles/:article_id/comments(Post new comment)
+    - /api/users
+        - /api/users/:username
+    - /api/comments/:comment_id (Need to create the endpoint GET/comments/comment_id)
+        -DELETE /api/comments/:comment_id (Deletes a comment by given comment_id)
+    
