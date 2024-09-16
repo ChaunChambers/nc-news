@@ -200,7 +200,7 @@ button:focus-visible {
 
 a {
   font-weight: 500;
-  color: white;
+  color: black;
   text-decoration: inherit;
 }
 a:hover {
