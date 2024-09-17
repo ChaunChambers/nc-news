@@ -11,6 +11,7 @@ import Article from "./components/Article";
 import "./App.css";
 
 function App() {
+ 
   return (
     <>
       <Router>
@@ -18,7 +19,10 @@ function App() {
         <Routes>
           <Route path="/" element={<ArticlesList />}></Route>
           <Route path="/articles" element={<ArticlesList />}></Route>
-          <Route path="/articles/:article_id" element={<Article />}></Route>
+          <Route
+            path="/articles/:article_id"
+            element={<Article  />}
+          ></Route>
         </Routes>
       </Router>
     </>

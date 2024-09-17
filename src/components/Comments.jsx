@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import getComments from "../assets/Utils/getComments";
+import { useParams } from "react-router-dom";
 
-const Comments = ({ article_id }) => {
+const Comments = () => {
+  const { article_id } = useParams();
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getComments(article_id).then((comments) => {
       setComments(comments);
-      console.log(comments);
     });
   }, [article_id]);
   return (
@@ -16,7 +17,7 @@ const Comments = ({ article_id }) => {
         {comments.map((comment, index) => {
           return (
             <>
-              <li className="item">
+              <li className="item" key={index}>
                 <div className="article-div">
                   <p>{comment.body}</p>
                   <h4>Topic: {comment.topic}</h4>
