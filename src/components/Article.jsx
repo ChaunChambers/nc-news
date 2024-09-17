@@ -8,6 +8,8 @@ const Article = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({ title: "Not Found" });
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
+
   function handleCountUp() {
     setCount(article.votes++);
   }
@@ -24,7 +26,6 @@ const Article = () => {
     updateArticleVotes(article_id, count).then((count) => setCount(count));
   }, [count]);
 
-  const navigate = useNavigate();
   return (
     <div>
       {article.title != "Not Found" ? (
