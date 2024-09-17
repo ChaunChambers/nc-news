@@ -1,6 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0;
   text-align: center;
 }
 
@@ -32,14 +33,19 @@ body {
 }
 
 h2 {
-  font-size: 1.5em Im !important;
+  font-size: 1.5em !important;
 }
 
 .container {
+  margin: 0 70px !important;
   display: flex;
   height: 200px;
   flex-wrap: wrap;
   align-content: space-between;
+}
+
+.container-comments {
+  display: inline-block;
 }
 
 .comments-container {
@@ -56,6 +62,16 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
   margin: 0 auto;
   padding: 10px;
   border: 1px solid black;
@@ -155,12 +171,21 @@ button,
   transition: border-color 0.25s;
   color: white;
   border-radius: 5px;
+  text-decoration: none;
+}
+
+.margin-left-right {
+  margin: 0 10px;
 }
 
 .top {
   margin: -20px 0 20px 0;
 }
 
+.float-right {
+  float: right;
+  margin-top: -50px;
+}
 .sell {
   margin-right: 20px;
 }
@@ -172,8 +197,8 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.add-new-item {
-  margin-top: 20px;
+.add-new-comment {
+  margin-top: 20px 0 20px 20px;
 }
 .logout-link {
   position: absolute;
@@ -209,19 +234,27 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: black;
+  color: white;
 }
 
 .user-card {
   margin: 5px;
 }
-
-.article-div {
+.article-div-main {
   width: 350px;
   height: auto;
   border: 1px solid #2d2d2d;
   border-radius: 25px;
-  padding: 10px;
+  padding: 25px;
+}
+
+.article-div {
+  width: 1280px;
+  height: auto;
+  border: 1px solid #2d2d2d;
+  border-radius: 25px;
+  padding: 25px;
+  margin-left: -40px;
 }
 
 .one-article-div {
@@ -238,7 +271,8 @@ img.user-img {
 
 .click-avatar,
 .input-search,
-.logged-in-text {
+.logged-in-text,
+h3 {
   background-color: rgb(250, 212, 250);
 }
 

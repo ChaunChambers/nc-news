@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import getArticle from "../assets/Utils/getArticle";
 import Comments from "./Comments";
 import updateArticleVotes from "../assets/Utils/updateArticleVotes";
+import { HashLink } from "react-router-hash-link";
 
 const Article = () => {
   const { article_id } = useParams();
@@ -11,32 +12,50 @@ const Article = () => {
     getArticle(article_id).then((article) => {
       setArticle(article);
     });
-  }, []);
+  }, [article_id]);
+
   const [count, setCount] = useState(article.votes);
-  const navigate = useNavigate();
+  let counter = 0;
   function handleCountUp() {
-    article.votes++;
-    updateArticleVotes(article_id, count);
-    setCount(article.votes);
+    counter++;
+    updateArticleVotes(article_id, count, article.votes);
+    setCount(article.votes++);
   }
   function handleCountDown() {
-    article.votes--;
-    setCount(article.votes);
-    updateArticleVotes(article_id, count);
+    counter--;
+    setCount(article.votes--);
+    updateArticleVotes(article_id, count, article.votes);
+  }
+  const navigate = useNavigate();
+  function handleNavigate() {
+    navigate("./#form");
   }
 
   return (
     <div>
       {article.title != "Not Found" ? (
-        <div className="one-article-div">
-          <h2>Title: {article.title}</h2>
+        <div className="one-article-div" id="top">
+          <h3>Title: {article.title}</h3>
           <h4>Topic: {article.topic}</h4>
           <h4>Author: {article.author}</h4>
           <p>{article.body}</p>
           <h5>Created: {article.created_at}</h5>
           <h5>Votes: {count}</h5>
-          <button onClick={handleCountUp}>Vote Up</button>
-          <button onClick={handleCountDown}>Vote Down</button>
+          <button
+            onClick={handleCountUp}
+            className="input-submit margin-left-right"
+          >
+            Vote Up
+          </button>
+          <button
+            onClick={handleCountDown}
+            className="input-submit margin-left-right"
+          >
+            Vote Down
+          </button>
+          <HashLink to="#form" className="input-submit margin-left-right">
+            Post Comment
+          </HashLink>
           <p>Comment Count: {article.comment_count}</p>
         </div>
       ) : (

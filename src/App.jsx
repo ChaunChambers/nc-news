@@ -9,22 +9,26 @@ import {
 import ArticlesList from "./components/ArticlesList";
 import Article from "./components/Article";
 import "./App.css";
+import NavBarSite from "./components/NavBarSite";
 
 function App() {
- 
   return (
     <>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<ArticlesList />}></Route>
-          <Route path="/articles" element={<ArticlesList />}></Route>
-          <Route
-            path="/articles/:article_id"
-            element={<Article  />}
-          ></Route>
-        </Routes>
-      </Router>
+      <div className="router">
+        <Router>
+          <NavBarSite />
+          <Header />
+          <Routes>
+            <Route path="/" element={<ArticlesList />}></Route>
+            <Route path="/articles" element={<ArticlesList />}></Route>
+            <Route path="/articles/:article_id" element={<Article />}></Route>
+            <Route
+              path="/api/articles/:article_id/comments"
+              element={<Article />}
+            ></Route>
+          </Routes>
+        </Router>
+      </div>
     </>
   );
 }

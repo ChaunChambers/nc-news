@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const updateArticleVotes = (article_id, count) => {
-  const data = { inc_votes: count };
+const updateArticleVotes = (article_id, count, updateArticleVotes) => {
+  const data = { inc_votes: count - updateArticleVotes };
 
   return axios
     .patch(
