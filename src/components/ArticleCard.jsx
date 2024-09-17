@@ -9,9 +9,7 @@ const ArticleCard = (article) => {
       <h5>Created: {article.article.created_at}</h5>
       <h5>Votes: {article.article.votes}</h5>
       <p>Comment Count: {article.article.comment_count}</p>
-      <Link to={`../api/articles/${article.article.article_id}`}>
-        View Article
-      </Link>
+      <Link to={`../articles/${article.article.article_id}`}>View Article</Link>
     </div>
   );
 };

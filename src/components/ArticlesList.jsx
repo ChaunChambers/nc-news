@@ -3,7 +3,7 @@ import getArticles from "../assets/Utils/getArticles";
 import ArticleCard from "./ArticleCard";
 import { Link, useParams } from "react-router-dom";
 
-const ArticlesList = (article_id) => {
+const ArticlesList = () => {
   const [listArticles, setListArticles] = useState([]);
 
   useEffect(() => {
@@ -17,9 +17,7 @@ const ArticlesList = (article_id) => {
         {listArticles.map((article, index) => {
           return (
             <li key={index} className="item">
-              {console.log(article_id)}
-
-              <ArticleCard article={article} article_id={article_id} />
+              <ArticleCard article={article} />
             </li>
           );
         })}

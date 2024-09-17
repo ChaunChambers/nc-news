@@ -11,19 +11,18 @@ import Article from "./components/Article";
 import "./App.css";
 
 function App() {
-  const { article_id } = useParams();
-
+ 
   return (
     <>
       <Router>
         <Header />
         <Routes>
           <Route path="/" element={<ArticlesList />}></Route>
+          <Route path="/articles" element={<ArticlesList />}></Route>
           <Route
-            path="/api/articles"
-            element={<ArticlesList article_id={article_id} />}
+            path="/articles/:article_id"
+            element={<Article  />}
           ></Route>
-          <Route path="/api/articles/:article_id" element={<Article />}></Route>
         </Routes>
       </Router>
     </>

@@ -24,7 +24,7 @@ Have a look at your API endpoints. Think about what data you have available, and
 - POST/api/articles/:article_id/comments
     - posts new comment given the article_id
 - PATCH/api/articles/:article_id
-    - updates votes property of srticle by article_id
+    - updates votes property of article by article_id
 - DELETE/api/comments/:comment_id
     - deletes a comment given comment_id
 
