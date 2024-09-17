@@ -7,24 +7,23 @@ import updateArticleVotes from "../assets/Utils/updateArticleVotes";
 const Article = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({ title: "Not Found" });
-  const [count, setCount] = useState(0);
-  const navigate = useNavigate();
-
-  function handleCountUp() {
-    setCount(article.votes++);
-  }
-  function handleCountDown() {
-    setCount(article.votes--);
-  }
   useEffect(() => {
     getArticle(article_id).then((article) => {
       setArticle(article);
     });
-  }, [article_id]);
-
-  useEffect(() => {
-    updateArticleVotes(article_id, count).then((count) => setCount(count));
-  }, [count]);
+  }, []);
+  const [count, setCount] = useState(article.votes);
+  const navigate = useNavigate();
+  function handleCountUp() {
+    article.votes++;
+    updateArticleVotes(article_id, count);
+    setCount(article.votes);
+  }
+  function handleCountDown() {
+    article.votes--;
+    setCount(article.votes);
+    updateArticleVotes(article_id, count);
+  }
 
   return (
     <div>
