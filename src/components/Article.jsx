@@ -16,18 +16,24 @@ const Article = () => {
       setCount(article.votes);
     });
   }, []);
-  function handleCountUp() {
-    setCounter(counter + 1);
-    article.votes++;
-    setCount(article.votes);
-    updateArticleVotes(article_id, counter);
+
+  function handleVote(e) {
+    const buttonValue = e.target.value;
+
+    if (buttonValue === "Vote Up") {
+      setCounter(counter + 1);
+      article.votes++;
+      setCount(article.votes);
+      updateArticleVotes(article_id, counter);
+    }
+    if (buttonValue === "Vote Down") {
+      setCounter(counter - 1);
+      article.votes--;
+      setCount(article.votes);
+      updateArticleVotes(article_id, counter);
+    }
   }
-  function handleCountDown() {
-    setCounter(counter - 1);
-    article.votes--;
-    setCount(article.votes);
-    updateArticleVotes(article_id, counter);
-  }
+
   const navigate = useNavigate();
   function handleNavigate() {
     navigate("./#form");
@@ -43,20 +49,20 @@ const Article = () => {
           <p>{article.body}</p>
           <h5>Created: {article.created_at}</h5>
           <h5>Votes: {count}</h5>
-          <button
-            onClick={handleCountUp}
-            name="Vote Up"
+          <input
+            type="submit"
+            onClick={(e) => handleVote(e)}
+            value="Vote Up"
             className="input-submit margin-left-right"
-          >
-            Vote Up
-          </button>
-          <button
-            onClick={handleCountDown}
-            name="Vote Down"
+          />
+
+          <input
+            type="submit"
+            onClick={(e) => handleVote(e)}
+            value="Vote Down"
             className="input-submit margin-left-right"
-          >
-            Vote Down
-          </button>
+          />
+
           <HashLink to="#form" className="input-submit margin-left-right">
             Post Comment
           </HashLink>
