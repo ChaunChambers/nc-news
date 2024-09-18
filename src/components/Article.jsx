@@ -8,23 +8,25 @@ import { HashLink } from "react-router-hash-link";
 const Article = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({ title: "Not Found" });
+  const [count, setCount] = useState(article.votes);
+  const [counter, setCounter] = useState(0);
   useEffect(() => {
     getArticle(article_id).then((article) => {
       setArticle(article);
+      setCount(article.votes);
     });
-  }, [article_id]);
-
-  const [count, setCount] = useState(article.votes);
-  let counter = 0;
+  }, []);
   function handleCountUp() {
-    counter++;
-    updateArticleVotes(article_id, count, article.votes);
-    setCount(article.votes++);
+    setCounter(counter + 1);
+    article.votes++;
+    setCount(article.votes);
+    updateArticleVotes(article_id, counter);
   }
   function handleCountDown() {
-    counter--;
-    setCount(article.votes--);
-    updateArticleVotes(article_id, count, article.votes);
+    setCounter(counter - 1);
+    article.votes--;
+    setCount(article.votes);
+    updateArticleVotes(article_id, counter);
   }
   const navigate = useNavigate();
   function handleNavigate() {
@@ -33,7 +35,7 @@ const Article = () => {
 
   return (
     <div>
-      {article.title != "Not Found" ? (
+      {article.title != "Not Found" && article.title ? (
         <div className="one-article-div" id="top">
           <h3>Title: {article.title}</h3>
           <h4>Topic: {article.topic}</h4>
@@ -43,12 +45,14 @@ const Article = () => {
           <h5>Votes: {count}</h5>
           <button
             onClick={handleCountUp}
+            name="Vote Up"
             className="input-submit margin-left-right"
           >
             Vote Up
           </button>
           <button
             onClick={handleCountDown}
+            name="Vote Down"
             className="input-submit margin-left-right"
           >
             Vote Down
