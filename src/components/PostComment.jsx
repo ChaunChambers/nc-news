@@ -65,7 +65,7 @@ const PostComment = ({ article_id }) => {
           </button>
         </form>
 
-        {isSuccessful && <h3>Comment posted!</h3>}
+        {isSuccessful && <h3 className="top-margin">Comment posted!</h3>}
         {isError && <h3>{errorMessage}</h3>}
         <HashLink
           to="#top"

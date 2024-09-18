@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import getComments from "../assets/Utils/getComments";
 import { useParams } from "react-router-dom";
 import PostComment from "./PostComment";
+import DeleteComment from "./DeleteComment";
+import { Link } from "react-router-dom";
 
 const Comments = () => {
   const { article_id } = useParams();
@@ -12,6 +14,7 @@ const Comments = () => {
       setComments(comments);
     });
   }, [article_id]);
+
   return (
     <>
       <div>
@@ -26,6 +29,13 @@ const Comments = () => {
                     <h4>Author: {comment.author}</h4>
                     <h5>Created: {comment.created_at}</h5>
                     <h5>Votes: {comment.votes}</h5>
+                    <Link
+                      to={`../comments/${comment.comment_id}`}
+                      className="input-submit "
+                      state={{ from: article_id }}
+                    >
+                      Edit Comment
+                    </Link>
                   </div>
                 </li>
               </>
