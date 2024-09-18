@@ -51,14 +51,18 @@ const PostComment = ({ article_id }) => {
           <label className="input" required>
             Type Your Comment
           </label>
-          <input
+          <textarea
             name="content_body"
             type="text"
             placeholder="Write message..."
             value={content_body}
             onChange={handleChangeBody}
-          />
-          <button className="add-new-comment">Add New Comment</button>
+            rows="4"
+            cols="50"
+          ></textarea>
+          <button className="add-new-comment input-submit margin-top">
+            Add New Comment
+          </button>
         </form>
 
         {isSuccessful && <h3>Comment posted!</h3>}
