@@ -11,7 +11,6 @@ const DeleteComment = () => {
   const [comment, setComment] = useState("");
   const [successfulDelete, setSuccessfulDelete] = useState("");
   const navigate = useNavigate();
-
   useEffect(() => {
     getComment(comment_id).then((comment) => {
       setComment(comment);
@@ -22,6 +21,7 @@ const DeleteComment = () => {
     deleteComment(comment_id).then((response) => console.log(response));
     setSuccessfulDelete(true);
   }
+
   return (
     <div>
       <ul className="container-comments">
