@@ -4,13 +4,16 @@ import ArticleCard from "./ArticleCard";
 import { Link, useParams } from "react-router-dom";
 import Lottie from "react-lottie";
 import animation from "../assets/Animation.json";
+import { useSearchParams } from "react-router-dom";
 
-const ArticlesList = () => {
+const ArticlesList = ({ oneTopic }) => {
   const [listArticles, setListArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const topic = searchParams.get("topic");
 
   useEffect(() => {
-    getArticles().then((articles) => {
+    getArticles(topic).then((articles) => {
       setListArticles(articles);
       setIsLoading(false);
     });
