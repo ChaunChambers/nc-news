@@ -37,7 +37,7 @@ const PostComment = ({ article_id }) => {
   return (
     <div>
       <div>
-        <form onSubmit={handleSubmit} id="form">
+        <form onSubmit={handleSubmit} id="form" className="post-form">
           <label className="input" required>
             Username
           </label>
