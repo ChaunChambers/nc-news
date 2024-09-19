@@ -68,7 +68,7 @@ h2 {
   border-radius: 5px;
 }
 
-form {
+.post-form {
   display: flex;
   flex-direction: column;
   width: 100%;
