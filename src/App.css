@@ -233,6 +233,10 @@ button:focus-visible {
   margin-right: -1100px;
 }
 
+.margin-right-small {
+  margin-right: 20px;
+}
+
 .navbar-toggler-icon {
   background-color: white;
 }
@@ -284,7 +288,8 @@ img.user-img {
 .click-avatar,
 .input-search,
 .logged-in-text,
-h3 {
+h3,
+.not-found-text {
   background-color: rgb(250, 212, 250);
 }
 

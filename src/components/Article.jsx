@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import getArticle from "../assets/Utils/getArticle";
+// import getArticle from "../assets/Utils/getArticle";
+import { getArticle } from "../assets/Utils/apiCalls";
+import { updateArticleVotes } from "../assets/Utils/apiCalls";
 import Comments from "./Comments";
-import updateArticleVotes from "../assets/Utils/updateArticleVotes";
+// import updateArticleVotes from "../assets/Utils/updateArticleVotes";
 import { HashLink } from "react-router-hash-link";
 
 const Article = () => {

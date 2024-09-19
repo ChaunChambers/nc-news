@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import getComments from "../assets/Utils/getComments";
-import deleteComment from "../assets/Utils/deleteComment";
-import getComment from "../assets/Utils/getComment";
+// import getComments from "../assets/Utils/getComments";
+// import deleteComment from "../assets/Utils/deleteComment";
+// import getComment from "../assets/Utils/getComment";
+import {
+  getComments,
+  deleteComment,
+  getComment,
+} from "../assets/Utils/apiCalls";
 
 const DeleteComment = () => {
   const { comment_id } = useParams();

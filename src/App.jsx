@@ -11,8 +11,11 @@ import Article from "./components/Article";
 import "./App.css";
 import NavBarSite from "./components/NavBarSite";
 import DeleteComment from "./components/DeleteComment";
-import getTopics from "./assets/Utils/getTopics";
-import Topics from "./components/Topics";
+// import getTopics from "./assets/Utils/getTopics";
+import { getTopics } from "./assets/Utils/apiCalls";
+import { Navigate } from "react-router-dom";
+import PageNotFound from "./components/PageNotFound";
+
 function App() {
   const [topics, setTopics] = useState([]);
   useEffect(() => {
@@ -32,10 +35,12 @@ function App() {
               return (
                 <>
                   <Route
+                    key={index}
                     path="/"
                     element={<ArticlesList oneTopic={topic.slug} />}
                   ></Route>
                   <Route
+                    key={index + "2"}
                     path="/articles"
                     element={<ArticlesList oneTopic={topic.slug} />}
                   ></Route>
@@ -58,6 +63,9 @@ function App() {
                 element={<ArticlesList oneTopic={topic.slug} />}
               ></Route>;
             })}
+            <Route path="*" element={<PageNotFound />} />
+
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
         </Router>
       </div>
