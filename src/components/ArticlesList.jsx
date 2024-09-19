@@ -6,6 +6,7 @@ import Lottie from "react-lottie";
 import animation from "../assets/Animation.json";
 import { useSearchParams } from "react-router-dom";
 import Search from "./Search";
+import PageNotFound from "./PageNotFound";
 
 const ArticlesList = ({ oneTopic }) => {
   const [listArticles, setListArticles] = useState([]);
@@ -15,29 +16,45 @@ const ArticlesList = ({ oneTopic }) => {
   const sort_by = searchParams.get("sort_by");
   const order = searchParams.get("order");
 
-  //NOT DRY!
+  const onLoad = () => {
+    let query1;
+    let query2;
+    let query3;
 
-  if (sort_by || order) {
+    if (sort_by || order) {
+      query1 = topic;
+      query2 = sort_by;
+      query3 = order;
+    } else if (topic) {
+      query1 = topic;
+    }
+
     useEffect(() => {
-      getArticles(topic, sort_by, order).then((articles) => {
+      getArticles(query1, query2, query3).then((articles) => {
         setListArticles(articles);
         setIsLoading(false);
       });
     }, []);
-  } else if (topic) {
-    useEffect(() => {
-      getArticles(topic).then((articles) => {
-        setListArticles(articles);
-        setIsLoading(false);
-      });
-    }, []);
-  } else
-    useEffect(() => {
-      getArticles().then((articles) => {
-        setListArticles(articles);
-        setIsLoading(false);
-      });
-    }, []);
+  };
+
+  onLoad();
+
+  if (
+    (isLoading &&
+      topic != "Football" &&
+      topic != "Coding" &&
+      topic != "Cooking") ||
+    (isLoading &&
+      sort_by != "created_at" &&
+      sort_by != "comment_count" &&
+      sort_by != "votes")
+  ) {
+    return (
+      <div>
+        <PageNotFound />
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (

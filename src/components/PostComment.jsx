@@ -1,5 +1,6 @@
 import { useState } from "react";
-import postComment from "../assets/Utils/postComment";
+// import postComment from "../assets/Utils/postComment";
+import { postComment } from "../assets/Utils/apiCalls";
 import { HashLink } from "react-router-hash-link";
 const PostComment = ({ article_id }) => {
   const [username, setUsername] = useState("");
