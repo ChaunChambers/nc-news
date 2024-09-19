@@ -71,7 +71,7 @@ function App() {
                 element={<ArticlesList oneTopic={topic.slug} />}
               ></Route>;
             })}
-            {/* <Route path="*" element={<PageNotFound />} /> */}
+            <Route path="*" element={<PageNotFound />} />
 
             {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
