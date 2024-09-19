@@ -226,11 +226,9 @@ button:focus-visible {
   float: right;
   border-radius: 5px;
   padding: 2px 20px;
-  margin-right: -710px;
 }
 
-.margin-right {
-  margin-right: -1100px;
+.margin-right-navbar {
 }
 
 .margin-right-small {
@@ -272,6 +270,13 @@ a:hover {
   background-color: rgb(244 244 244);
 }
 
+.user-img {
+  width: 292px;
+  height: 292px;
+  border: 1px solid #2d2d2d;
+  border-radius: 25px;
+}
+
 .one-article-div {
   border: 1px solid #2d2d2d;
   border-radius: 25px;
@@ -279,16 +284,11 @@ a:hover {
   background-color: rgb(244 244 244);
 }
 
-img.user-img {
-  width: 292px;
-  height: 292px;
-  border: 1px solid #2d2d2d;
-}
-
 .click-avatar,
 .input-search,
 .logged-in-text,
 h3,
+.pink,
 .not-found-text {
   background-color: rgb(250, 212, 250);
 }

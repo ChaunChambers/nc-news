@@ -5,8 +5,11 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { LinkContainer } from "react-router-bootstrap";
 import getArticles from "../assets/Utils/getArticles";
+import { UserContext } from "../contexts/UserContext";
 
-const NavBarSite = ({ topics }) => {
+const NavBarSite = ({ topics, isLoggedIn }) => {
+  const { userLoggedIn, setUserLoggedIn, handleLogOut } =
+    useContext(UserContext);
   function handleTopic() {
     const linkValue = e.target.value;
 
@@ -34,6 +37,7 @@ const NavBarSite = ({ topics }) => {
             >
               Articles
             </Nav.Link>
+
             {topics.map((topic, index) => {
               return (
                 <>
@@ -50,6 +54,24 @@ const NavBarSite = ({ topics }) => {
                 </>
               );
             })}
+
+            <Nav.Link className="nav-links" as={Link} to="/users">
+              {userLoggedIn ? `Users` : `Log In`}
+            </Nav.Link>
+            {userLoggedIn && (
+              <>
+                <Nav.Link className="nav-links " as={Link}>
+                  <p className="logout-paragraph hidemobile margin-right-navbar">
+                    Logged In: {userLoggedIn.username}
+                  </p>
+                </Nav.Link>
+                <Nav.Link className="nav-links" as={Link}>
+                  <button className="logout-button" onClick={handleLogOut}>
+                    Log Out
+                  </button>
+                </Nav.Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

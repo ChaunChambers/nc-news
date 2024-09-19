@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "./components/Header";
 import {
   BrowserRouter as Router,
@@ -11,13 +11,17 @@ import Article from "./components/Article";
 import "./App.css";
 import NavBarSite from "./components/NavBarSite";
 import DeleteComment from "./components/DeleteComment";
-// import getTopics from "./assets/Utils/getTopics";
 import { getTopics } from "./assets/Utils/apiCalls";
 import { Navigate } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
+import Users from "./components/Users";
+import { UserContext } from "./contexts/UserContext";
 
 function App() {
   const [topics, setTopics] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);
+
   useEffect(() => {
     getTopics().then((allTopics) => {
       setTopics(allTopics);
@@ -28,7 +32,7 @@ function App() {
     <>
       <div className="router">
         <Router>
-          <NavBarSite topics={topics} />
+          <NavBarSite topics={topics} isLoggedIn={isLoggedIn} />
           <Header />
           <Routes>
             {topics.map((topic, index) => {
@@ -55,6 +59,10 @@ function App() {
             <Route
               path="/comments/:comment_id"
               element={<DeleteComment />}
+            ></Route>
+            <Route
+              path="/users"
+              element={<Users userLoggedIn={userLoggedIn} />}
             ></Route>
             {topics.map((topic, index) => {
               <Route

@@ -58,3 +58,9 @@ export const updateArticleVotes = (article_id, count) => {
     return response;
   });
 };
+
+export const getAllUsers = () => {
+  return instance.get(`/users`).then((response) => {
+    return response.data.users;
+  });
+};
