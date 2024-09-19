@@ -39,22 +39,22 @@ const ArticlesList = ({ oneTopic }) => {
 
   onLoad();
 
-  if (
-    (isLoading &&
-      topic != "Football" &&
-      topic != "Coding" &&
-      topic != "Cooking") ||
-    (isLoading &&
-      sort_by != "created_at" &&
-      sort_by != "comment_count" &&
-      sort_by != "votes")
-  ) {
-    return (
-      <div>
-        <PageNotFound />
-      </div>
-    );
-  }
+  // if (
+  //   (isLoading &&
+  //     topic != "Football" &&
+  //     topic != "Coding" &&
+  //     topic != "Cooking") ||
+  //   (isLoading &&
+  //     sort_by != "created_at" &&
+  //     sort_by != "comment_count" &&
+  //     sort_by != "votes")
+  // ) {
+  //   return (
+  //     <div>
+  //       <PageNotFound />
+  //     </div>
+  //   );
+  // }
 
   if (isLoading) {
     return (
