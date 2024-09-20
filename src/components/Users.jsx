@@ -1,17 +1,11 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getAllUsers } from "../assets/Utils/apiCalls";
 import UserCard from "./UserCard";
 import { UserContext } from "../contexts/UserContext";
 
-const Users = () => {
-  const { userLoggedIn, setUserLoggedIn, handleLogOut } =
-    useContext(UserContext);
+const Users = ({ setUserLoggedIn, handleLogOut, handleSetUser }) => {
   const [users, setUsers] = useState([]);
-
-  function handleSetUser(user) {
-    setUserLoggedIn(user);
-  }
-
+  const { userLoggedIn } = useContext(UserContext);
   function handleLogIn() {
     setIsLoggedIn(true);
   }
@@ -43,8 +37,8 @@ const Users = () => {
               className="user-card"
               key={index}
               onClick={() => {
-                // handleLogIn();
                 handleSetUser(user);
+                handleLogIn;
               }}
             >
               <UserCard user={user} />

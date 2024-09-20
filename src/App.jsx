@@ -20,7 +20,8 @@ import { UserContext } from "./contexts/UserContext";
 function App() {
   const [topics, setTopics] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);
+  const { setUserLoggedIn, handleLogOut, handleSetUser } =
+    useContext(UserContext);
 
   useEffect(() => {
     getTopics().then((allTopics) => {
@@ -62,7 +63,13 @@ function App() {
             ></Route>
             <Route
               path="/users"
-              element={<Users userLoggedIn={userLoggedIn} />}
+              element={
+                <Users
+                  setIsLoggedIn={setUserLoggedIn}
+                  handleLogOut={handleLogOut}
+                  handleSetUser={handleSetUser}
+                />
+              }
             ></Route>
             {topics.map((topic, index) => {
               <Route
@@ -74,7 +81,7 @@ function App() {
             {/* The Code below is sending the error message on load in between changing the pages */}
             {/* <Route path="/*" element={<PageNotFound />} /> */}
 
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
         </Router>
       </div>
