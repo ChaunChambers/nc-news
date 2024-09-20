@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import getComments from "../assets/Utils/getComments";
 import { getComments } from "../assets/Utils/apiCalls";
 import { useParams } from "react-router-dom";
 import PostComment from "./PostComment";

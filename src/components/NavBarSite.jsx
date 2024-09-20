@@ -1,15 +1,16 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { LinkContainer } from "react-router-bootstrap";
 import getArticles from "../assets/Utils/getArticles";
+import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
-const NavBarSite = ({ topics, isLoggedIn }) => {
-  const { userLoggedIn, setUserLoggedIn, handleLogOut } =
+const NavBarSite = ({ topics }) => {
+  const { userLoggedIn, setUserLoggedIn, handleLogOut, handleSetUser } =
     useContext(UserContext);
+
   function handleTopic() {
     const linkValue = e.target.value;
 
@@ -61,6 +62,7 @@ const NavBarSite = ({ topics, isLoggedIn }) => {
             {userLoggedIn && (
               <>
                 <Nav.Link className="nav-links " as={Link}>
+                  {console.log(userLoggedIn)}
                   <p className="logout-paragraph hidemobile margin-right-navbar">
                     Logged In: {userLoggedIn.username}
                   </p>
