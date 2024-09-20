@@ -71,8 +71,6 @@ function App() {
                 element={<ArticlesList oneTopic={topic.slug} />}
               ></Route>;
             })}
-          </Routes>
-          <Routes>
             {/* The Code below is sending the error message on load in between changing the pages */}
             {/* <Route path="/*" element={<PageNotFound />} /> */}
 
