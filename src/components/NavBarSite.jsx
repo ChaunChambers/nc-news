@@ -4,18 +4,19 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { LinkContainer } from "react-router-bootstrap";
 import getArticles from "../assets/Utils/getArticles";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 
-const NavBarSite = ({ topics }) => {
-  const { userLoggedIn, setUserLoggedIn, handleLogOut, handleSetUser } =
-    useContext(UserContext);
+const NavBarSite = ({ topics, userLoggedIn, handleLogOut }) => {
+  const [linkValue, setLinkValue] = useState();
 
   function handleTopic() {
-    const linkValue = e.target.value;
-
+    setLinkValue(inputRef.current.value);
     linkValue ? getArticles(linkValue) : getArticles();
   }
+
+  const inputRef = useRef();
+
   return (
     <>
       <Navbar bg="dark" expand="lg">
@@ -26,7 +27,8 @@ const NavBarSite = ({ topics }) => {
               className="nav-links"
               as={Link}
               to="/"
-              onClick={(e) => handleTopic(e)}
+              ref={inputRef}
+              // onClick={handleTopic}
             >
               Home
             </Nav.Link>
@@ -34,11 +36,12 @@ const NavBarSite = ({ topics }) => {
               className="nav-links"
               as={Link}
               to="/articles"
-              onClick={(e) => handleTopic(e)}
+              ref={inputRef}
+              // onClick={handleTopic}
             >
               Articles
             </Nav.Link>
-
+            {/* 
             {topics.map((topic, index) => {
               return (
                 <>
@@ -47,22 +50,35 @@ const NavBarSite = ({ topics }) => {
                     className="nav-links"
                     as={Link}
                     to={`/articles?topic=${topic.slug}`}
-                    onClick={(e) => handleTopic(e)}
+                    onClick={handleTopic}
+                    ref={inputRef}
                     value={topic.slug}
                   >
                     Topic: {topic.slug[0].toUpperCase() + topic.slug.slice(1)}
                   </Nav.Link>
                 </>
               );
+            })} */}
+            {topics.map((topic, index) => {
+              return (
+                <>
+                  <Nav.Link
+                    className="nav-links"
+                    as={Link}
+                    to={`/${topic.slug}`}
+                    ref={inputRef}
+                  >
+                    {topic.slug[0].toUpperCase() + topic.slug.slice(1)}
+                  </Nav.Link>
+                </>
+              );
             })}
-
             <Nav.Link className="nav-links" as={Link} to="/users">
               {userLoggedIn ? `Users` : `Log In`}
             </Nav.Link>
             {userLoggedIn && (
               <>
                 <Nav.Link className="nav-links " as={Link}>
-                  {console.log(userLoggedIn)}
                   <p className="logout-paragraph hidemobile margin-right-navbar">
                     Logged In: {userLoggedIn.username}
                   </p>
