@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect } from "react";
-import { getAllUsers } from "../assets/Utils/apiCalls";
+import { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
@@ -20,9 +19,7 @@ export const UserProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider
-      value={{ userLoggedIn, setUserLoggedIn, handleLogOut, handleSetUser }}
-    >
+    <UserContext.Provider value={{ userLoggedIn, handleLogOut, handleSetUser }}>
       {children}
     </UserContext.Provider>
   );

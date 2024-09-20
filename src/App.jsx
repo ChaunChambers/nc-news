@@ -16,13 +16,13 @@ import { Navigate } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
 import Users from "./components/Users";
 import { UserContext } from "./contexts/UserContext";
+import Topic from "./components/Topic";
 
 function App() {
   const [topics, setTopics] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { setUserLoggedIn, handleLogOut, handleSetUser } =
+  const { userLoggedIn, handleLogOut, handleSetUser, userLoggedInRef } =
     useContext(UserContext);
-
   useEffect(() => {
     getTopics().then((allTopics) => {
       setTopics(allTopics);
@@ -33,7 +33,12 @@ function App() {
     <>
       <div className="router">
         <Router>
-          <NavBarSite topics={topics} isLoggedIn={isLoggedIn} />
+          <NavBarSite
+            topics={topics}
+            userLoggedIn={userLoggedIn}
+            handleLogOut={handleLogOut}
+            userLoggedInRef={userLoggedInRef}
+          />
           <Header />
           <Routes>
             {topics.map((topic, index) => {
@@ -52,6 +57,7 @@ function App() {
                 </>
               );
             })}
+            <Route path="/:topic" element={<Topic />}></Route>
             <Route path="/articles/:article_id" element={<Article />}></Route>
             <Route
               path="/articles/:article_id/comments"
@@ -61,11 +67,12 @@ function App() {
               path="/comments/:comment_id"
               element={<DeleteComment />}
             ></Route>
+
             <Route
               path="/users"
               element={
                 <Users
-                  setIsLoggedIn={setUserLoggedIn}
+                  userLoggedIn={userLoggedIn}
                   handleLogOut={handleLogOut}
                   handleSetUser={handleSetUser}
                 />
