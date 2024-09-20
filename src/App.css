@@ -306,4 +306,8 @@ h3,
     position: relative;
     margin-left: 500px;
   }
+
+  .container {
+    margin: 0 auto !important;
+  }
 }
