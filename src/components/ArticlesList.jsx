@@ -39,6 +39,13 @@ const ArticlesList = ({ oneTopic }) => {
 
   onLoad();
 
+  function errorHandling() {
+    return (
+      <div>
+        <PageNotFound />
+      </div>
+    );
+  }
   if (
     (isLoading &&
       topic != "Football" &&
@@ -49,11 +56,7 @@ const ArticlesList = ({ oneTopic }) => {
       sort_by != "comment_count" &&
       sort_by != "votes")
   ) {
-    return (
-      <div>
-        <PageNotFound />
-      </div>
-    );
+    errorHandling();
   }
 
   if (isLoading) {
