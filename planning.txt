@@ -30,8 +30,7 @@ Have a look at your API endpoints. Think about what data you have available, and
 
 - GET/api/comments/:comment_id
     - gets comment by comment id
-- GET/api/articles/topics
-    - get a list of all topics 
+
 
 What routes will your application have? What articles will you choose to display on the main page?
 
