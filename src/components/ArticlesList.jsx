@@ -69,13 +69,13 @@ const ArticlesList = ({ oneTopic }) => {
     return (
       <div>
         <p>
-          This website showcases A CRUD application from a Frontend perspective
-          which utilises the API from a backend project. This application uses
-          React. This project is about Northcoders News - a social news
-          aggregation, web content rating and discussion website. Northcoders
-          News has articles which are divided into topics, and each article has
-          user-curated ratings from upvotes and downvotes using the API. Users
-          can also add comments about an article.
+          This website showcases a CRUD application from a Frontend perspective
+          which utilises the API from a previous backend project. This
+          application uses React. This project is about Northcoders News - a
+          social news aggregation, web content rating and discussion website.
+          Northcoders News has articles which are divided into topics, and each
+          article has user-curated ratings from upvotes and downvotes using the
+          API. Users can also add comments about an article.
         </p>
         <Search sort_by={sort_by} order={order} />
         <ul className="container">
