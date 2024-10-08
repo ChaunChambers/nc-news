@@ -288,8 +288,9 @@ a:hover {
 .input-search,
 .logged-in-text,
 h3,
-.pink,
+.blue,
 .not-found-text {
+  background-color: rgb(251, 219, 238);
 }
 
 /*MOBILE PORTRAIT*/

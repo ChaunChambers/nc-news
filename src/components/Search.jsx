@@ -6,7 +6,7 @@ const Search = ({ sort_by, order }) => {
   return (
     <div>
       <form action="">
-        <label className="input-search" htmlFor="sort_by">
+        <label className="input-search blue" htmlFor="sort_by">
           Filter by search:
         </label>
         <select name="sort_by" id="sort_by">
@@ -14,7 +14,7 @@ const Search = ({ sort_by, order }) => {
           <option value="comment_count">Comment Count</option>
           <option value="votes">Votes</option>
         </select>
-        <label className="input-search" htmlFor="order">
+        <label className="input-search blue" htmlFor="order">
           Choose Ascending or Descending Order:
         </label>
         <select name="order" id="order">
