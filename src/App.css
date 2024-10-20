@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 1430px;
   margin: 0 auto;
   padding: 0;
   text-align: center;
@@ -21,7 +21,17 @@
 }
 
 .header {
-  background-color: rgb(171, 234, 255);
+  background-color: rgb(203, 238, 250) !important;
+  /* border-bottom: 2px solid rgb(153, 188, 254) !important; */
+}
+
+.card,
+.blueforreal,
+.card.blueforreal {
+  --bs-card-bg: rgb(203, 238, 250) !important;
+  /* border: 2px solid rgb(153, 188, 254) !important; */
+  border-radius: 12px !important;
+  border: none !important;
 }
 
 body {
@@ -42,6 +52,11 @@ h2 {
   height: 200px;
   flex-wrap: wrap;
   align-content: space-between;
+}
+
+.margin-left {
+  /* margin-left: 10px !important;
+  margin-right: 0px !important; */
 }
 
 .container-comments {
@@ -165,6 +180,13 @@ ul {
 .navbar-nav {
   --bs-nav-link-color: white;
   --bs-nav-link-hover-color: white !important;
+  margin-left: 100px;
+}
+
+.smaller-width {
+  margin: auto auto !important;
+  width: 80%;
+  padding: 10px;
 }
 
 button,
@@ -290,7 +312,20 @@ a:hover {
 h3,
 .blue,
 .not-found-text {
-  background-color: rgb(251, 219, 238);
+  background-color: rgb(251, 219, 238) !important;
+  border: 2px solid rgb(255, 137, 208) !important;
+  opacity: 0.9;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.white {
+  background-color: rgb(255, 255, 255) !important;
+  opacity: 0.9;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid rgb(121, 121, 121) !important;
+  padding: 10px 10px;
 }
 
 /*MOBILE PORTRAIT*/

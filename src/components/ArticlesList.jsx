@@ -68,7 +68,7 @@ const ArticlesList = ({ oneTopic }) => {
   } else
     return (
       <div>
-        <p>
+        <p align="center" className="smaller-width">
           This website showcases a CRUD application from a Frontend perspective
           which utilises the API from a previous backend project. This
           application uses React. This project is about Northcoders News - a
@@ -78,7 +78,7 @@ const ArticlesList = ({ oneTopic }) => {
           API. Users can also add comments about an article.
         </p>
         <Search sort_by={sort_by} order={order} />
-        <ul className="container">
+        <ul className="container margin-left">
           {listArticles.map((article, index) => {
             return (
               <li key={index} className="item">

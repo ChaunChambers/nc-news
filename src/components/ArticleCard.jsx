@@ -7,7 +7,7 @@ const ArticleCard = (article) => {
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Body>
-        <Card.Title>{article.article.title}</Card.Title>
+        <Card.Title className="white">{article.article.title}</Card.Title>
         <h5>Author: {article.article.author}</h5>
 
         <Card.Subtitle className="mb-2 text-muted">
